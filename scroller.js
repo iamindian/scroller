@@ -132,8 +132,11 @@
 			}
 				
 		}
-
-		
+		function hScrollBar(){}
+		function hScrollContent(){}
+		function createHBar(){}
+		function createHBackground(){}
+			
 
 		
 
