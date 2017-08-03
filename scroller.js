@@ -16,7 +16,7 @@
 			throw new Error("no target can be found");
 		_c.offsetParent.style.position = "relative";
 		_c.style.overflow = "hidden";
-		_c.style.height = 500 + "px";
+		_c.style.height = 200 + "px";
 		_c.style.margin = 0 + "px";
 		document.body.style.overflow = "hidden";
 		var clientTop =  _c.clientTop;
@@ -97,6 +97,7 @@
 		}
 		function scroll(e){
 			scrollBar(e);
+			scrollContent(e);
 			e.preventDefault();
 			e.stopPropagation();
 			return false;	
@@ -121,7 +122,14 @@
 			}
 		}
 		function scrollContent(e){
-			var current = _c.scrollTop + e.daltaY * scrollVolicity;
+			var current = _c.scrollTop + e.deltaY * scrollVelocity;
+			if(current>scrollHeight - clientHeight - clientTop){
+				_c.scrollTop = scrollHeight - offsetHeight - clientTop;	
+			}else if(current<0){
+				_c.scrollTop = 0;	
+			}else{
+				_c.scrollTop = current;	
+			}
 				
 		}
 
